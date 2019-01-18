@@ -10,6 +10,6 @@ app.use(express.static("public"));
 app.set("view engine", "hbs");
 app.use(methodOverride("_method"));
 
-app.use(require("./routes/index.js"));
+// app.use(require("./routes/index.js"));
 
 app.listen(3000, () => console.log("server is running"));
