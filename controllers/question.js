@@ -1,9 +1,9 @@
-const { Question, Comment } = require("../models/question");
+const { Question, Comment } = require("../models/Question");
 const User = require("../models/User");
 
 module.exports = {
   show: (req, res) => {
-    question.findOne({ _id: req.params.id })
+    Question.findOne({ _id: req.params.id })
       .populate("author")
       .then(question => {
         Answer.populate(question.answers, { path: "author" }).then(answers => {
@@ -18,7 +18,7 @@ module.exports = {
     });
   },
   create: (req, res) => {
-    question.create({
+    Question.create({
       content: req.body.question.content,
       author: req.body.author
     }).then(question => {
@@ -32,7 +32,7 @@ module.exports = {
   },
   update: (req, res) => {
     let { content, author } = req.body;
-    question.findOne({ _id: req.params.id }).then(question => {
+    Question.findOne({ _id: req.params.id }).then(question => {
       question.answers.push({
         content,
         author
