@@ -1,7 +1,6 @@
 {
   "name": "stackoverflow-lab",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -26,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/zukululu/stackoverflow-lab/issues"
   },
-  "homepage": "https://github.com/zukululu/stackoverflow-lab#readme"
+  "homepage": "https://github.com/zukululu/stackoverflow-lab#readme",
+  "description": ""
 }
