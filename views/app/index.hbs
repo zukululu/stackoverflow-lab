@@ -1,7 +1,8 @@
-    <p>Hello from views/app/index.hbs!</p>
+<p>Hello from views/app/index.hbs!</p>
 {{#if questions}}
     <ul class="questions">
         {{#each questions}}
+            <p>I am a question</p>
             {{> 'question'}}
         {{/each}}
     </ul>
