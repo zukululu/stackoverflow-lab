@@ -2,7 +2,8 @@
 {{#if questions}}
     <ul class="questions">
         {{#each questions}}
-            <p>{{ content }}</p>
+            <a href='/question/{{_id}}' > <p>{{ content }}</p> </a>
+            {{!-- <p>{{ content }}</p> --}}
         {{/each}}
     </ul>
 {{/if}}
