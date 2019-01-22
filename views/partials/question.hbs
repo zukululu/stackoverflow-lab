@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-content">
+    <a class="card-title" href="/question/{{id}}">
+    {{!-- href could, potentially, possibly be wrong --}}
+      {{ content }}
+    </a>
+  </div>
+  <div class="card-action">
+    <a href="/user/{{ author.id }}" class="">{{ author.local.email }}</a>
+    <span class="question__date">{{ createdAt }}</span>
+    <span class="question_comments">{{ comments.length }} Comments</span>
+  </div>
+</div>
