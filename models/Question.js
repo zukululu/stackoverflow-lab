@@ -1,7 +1,7 @@
 const mongoose = require("../db/connection");
 const Schema = mongoose.Schema;
 
-const Answer = new Scheme({
+const Answer = new Schema({
   content: String,
   createdAt: {
     type: Date,

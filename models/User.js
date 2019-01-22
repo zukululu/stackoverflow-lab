@@ -1,7 +1,7 @@
 const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
 
-const User = new Scheme ({
+const User = new Schema ({
   email: String,
   password: String,
   questions: [
