@@ -5,8 +5,7 @@ const bcrypt = require("bcrypt-nodejs")
 User.find({}).remove(() => {
     Question.find({}).remove(() => {
       let bugs = User.create({
-          email: "bugsbunny@gmail.com",
-          password: createPassword("bugsbunny")
+          email: "bugsbgtunny@gmail.com",
       }).then(user => {
         Promise.all([
           Question.create({
@@ -28,7 +27,6 @@ User.find({}).remove(() => {
   
       let daffy = User.create({
           email: "daffyduck@gmail.com",
-          password: createPassword("daffyduck")
       }).then(user => {
         Promise.all([
           Question.create({
@@ -50,7 +48,6 @@ User.find({}).remove(() => {
   
       let elmer = User.create({
           email: "elmerfudd@gmail.com",
-          password: createPassword("elmerfudd")
       }).then(user => {
         Promise.all([
           Question.create({
