@@ -10,21 +10,8 @@ User.find({}).remove(() => {
         Promise.all([
           Question.create({
             content: "How old are you?",
-            author: user._id,
-            answers: [
-              {
-                content: 'I am 76',
-                createdAt: {
-                  type: Date,
-                  default: Date.now()
-                },
-                author: {
-                  type: Schema.Types.ObjectId,
-                  ref: "User"
-                }
-              }
-            ]
-          }).then(question => {
+            author: user._id
+              }).then(question => {
             user.questions.push(question);
           }),
           Question.create({
@@ -44,7 +31,19 @@ User.find({}).remove(() => {
         Promise.all([
           Question.create({
             content: "What's a for loop?",
-            author: user._id
+            author: user._id,
+            answers: [
+              {
+                content: 'I am 76',
+                createdAt: {
+                  type: Date,
+                  default: Date.now()
+                },
+                author: {
+                  type: Schema.Types.ObjectId,
+                  ref: "User"
+                }
+              }]
           }).then(question => {
             user.questions.push(question);
           }),
