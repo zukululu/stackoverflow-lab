@@ -25,10 +25,12 @@ module.exports = {
       User.findOne({ _id: req.body.author }).then(user => {
         user.questions.push(question);
         user.save(err => {
-          res.redirect(`/question/${question._id}`);
+          return res.redirect(`/question/${question._id}`);
         });
       });
-    });
+    }).catch(err => {
+      console.error(err)
+    })
   },
   update: (req, res) => {
     let { content, author } = req.body;
