@@ -1,5 +1,7 @@
 const { Question, Answer } = require("../models/Question");
 const User = require("../models/User");
+const bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = {
   show: (req, res) => {
