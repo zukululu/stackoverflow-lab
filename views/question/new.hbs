@@ -1,4 +1,6 @@
-<p class="question-form">
+{{!-- old one --}}
+
+{{!-- <p class="question-form">
     Hello from views/question/new
     <form action='/question' method="POST">
         <input type='text' name='question[content]'></input>
@@ -10,4 +12,27 @@
         </select>
         <button type="submit">Submit</button>
     </form>
-</p>
+</p> --}}
+
+
+{{!-- new one --}}
+
+<h3>hello from question/new!</h3>
+
+<form action='/question' method="POST">
+    <div class='form-group'>
+        <p>Your Question:</p>
+        <input name="question" type="text" name="question[content]">
+    </div>
+    <div class='form-group'>
+        <p>Your Username/Email:</p>
+        <input name="username" type="text" name="author">
+    </div>
+    <div class='form-group'></div>
+    <input type="submit" class="form-control" />
+</form>
+        <select name="" id="">
+            {{#each users}}
+            <option>{{email}}</option>
+            {{/each}}
+        </select>
