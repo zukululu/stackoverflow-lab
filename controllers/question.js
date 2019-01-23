@@ -8,7 +8,7 @@ module.exports = {
       .then(question => {
         Answer.populate(question.answers, { path: "author" }).then(answers => {
           question.answers = answers;
-          res.render("index", question);
+          res.render("question/show", question);
         });
       })
   },
