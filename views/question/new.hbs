@@ -26,18 +26,18 @@
         {{!-- the two things it should be calling is author and content, dscribed by the application controller --}}
 
         {{!-- We think the problem is within our inputs, right here --}}
-        <input name="content" type="text">
+        <input name="question[content]" type="text" id="content">
     </div>
 
     <div class='form-group'>
         <p>Author:</p>
-        <input name="author" type="text" >
+        <input name="question[author]" type="text" id="author" >
         <script>
-            console.log()
+            console.log(author)
         </script>
     </div>
 
-    <input type="submit" class="form-control" />
+    <input type="submit" value="Question" class="form-control" />
 
 </form>
 
