@@ -26,7 +26,7 @@ module.exports = {
       .then(newUser => {
         Question.create({
           content: req.body.question.content,
-          author: req.body.question.author
+          author: req.body.author
         }).then(newQuestion => {
           newUser.questions.push(newQuestion);
           return res.redirect(`/question/${newQuestion._id}`);
