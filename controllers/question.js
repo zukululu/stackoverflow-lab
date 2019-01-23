@@ -32,6 +32,7 @@ module.exports = {
       }).then(newQuestion => 
         {
         newUser.questions.push(newQuestion)
+        return res.redirect(`/question/${newQuestion._id}`);
         })
     }).catch(err => {
       console.error(err)
@@ -46,7 +47,6 @@ module.exports = {
   //     User.findOne({ email: req.body.author }).then(user => {
   //       user.questions.push(question);
   //       user.save(err => {
-  //         return res.redirect(`/question/${question._id}`);
   //       });
   //     });
   //   }).catch(err => {
