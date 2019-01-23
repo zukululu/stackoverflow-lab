@@ -17,21 +17,43 @@ module.exports = {
       res.render("question/new", { users });
     });
   },
-  create: (req, res) => {
-    Question.create({
-      content: req.body.question.content,
-      author: req.body.author
-    }).then(question => {
-      User.findOne({ _id: req.body.author }).then(user => {
-        user.questions.push(question);
-        user.save(err => {
-          return res.redirect(`/question/${question._id}`);
-        });
-      });
+  create: (req, res) => 
+  {
+    User.create(
+    {
+      email: req.params.email,
+      password: req.params.password
+    }).then((newUser) => 
+    {
+      Question.create(
+      {
+        content: req.params.content,
+        author: newUser.email
+      }).then(newQuestion => 
+        {
+        newUser.questions.push(newQuestion)
+        })
     }).catch(err => {
       console.error(err)
     })
   },
+
+
+  //   Question.create({
+  //     content: req.body.question.content,
+  //     author: req.body.author
+  //   }).then(question => {
+  //     User.findOne({ email: req.body.author }).then(user => {
+  //       user.questions.push(question);
+  //       user.save(err => {
+  //         return res.redirect(`/question/${question._id}`);
+  //       });
+  //     });
+  //   }).catch(err => {
+  //     console.error(err)
+  //   })
+
+
   update: (req, res) => {
     let { content, author } = req.body;
     Question.findOne({ _id: req.params.id }).then(question => {
