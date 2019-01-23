@@ -26,7 +26,7 @@ module.exports = {
     })
       .then(newUser => {
         Question.create({
-          content: req.params.content,
+          content: req.body.question.content,
           author: newUser.email
         }).then(newQuestion => {
           newUser.questions.push(newQuestion);
