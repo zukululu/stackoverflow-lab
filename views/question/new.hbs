@@ -1,12 +1,11 @@
 <p class="question-form">
     Hello from views/question/new
     <form action='/question' method="POST">
-        <textarea type='text' name='question[content]'></textarea>
+        <input type='text' name='question[content]'></input>
         <input type="text" name='author'></input>
         <select name="" id="">
             {{#each users}}
             <option>{{email}}</option>
-
             {{/each}}
         </select>
         <button type="submit">Submit</button>
