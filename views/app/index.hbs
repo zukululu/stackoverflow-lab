@@ -1,9 +1,9 @@
 <p>Hello from views/app/index.hbs!</p>
+<a href="/login">Login</a>
 {{#if questions}}
     <ul class="questions">
         {{#each questions}}
             <a href='/question/{{_id}}' > <p>{{ content }}</p> </a>
-            {{!-- <p>{{ content }}</p> --}}
         {{/each}}
     </ul>
 {{/if}}
