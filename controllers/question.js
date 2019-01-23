@@ -21,13 +21,12 @@ module.exports = {
   },
   create: (req, res) => {
     User.create({
-      email: req.params.email,
-      password: req.params.password
+      email: req.params.email
     })
       .then(newUser => {
         Question.create({
           content: req.body.question.content,
-          author: newUser.email
+          author: req.body.question.author
         }).then(newQuestion => {
           newUser.questions.push(newQuestion);
           return res.redirect(`/question/${newQuestion._id}`);
