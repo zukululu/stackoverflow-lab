@@ -21,20 +21,19 @@ module.exports = {
   },
   create: (req, res) => {
     User.create({
-      email: req.params.email
-    })
+      email: req.body.question.email
+    }).catch(err => {
+      console.error(err);
+      })
       .then(newUser => {
         Question.create({
           content: req.body.question.content,
-          author: req.body.author
+          author: newUser.email
         }).then(newQuestion => {
           newUser.questions.push(newQuestion);
           return res.redirect(`/question/${newQuestion._id}`);
         });
       })
-      .catch(err => {
-        console.error(err);
-      });
   },
 
   //   Question.create({
