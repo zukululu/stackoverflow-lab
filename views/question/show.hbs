@@ -4,11 +4,24 @@
 
 <p>Hello from views/question/show.hbs</p>
 
+<p>Question:</p>
 <h1>{{ content }}</h1>
-<h1>{{ author }}</h1>
-{{!-- <p>test</p> --}}
+<p>by</p>
+author: 
+<h3>{{ author }}</h3>
+question.author:
+<h3>{{ question.author }}</h3>
+Question.author:
+<h3>{{ Question.author }}</h3>
+author._id  :
+<h3>{{ author._id }}</h3>
 
-{{!-- 
+
+
+
+{{!-- Here is the proposed answers sheet --}}
+
+{{!--
 {{#if answers.length}}
 {{#each answers}}
 <div class="card">

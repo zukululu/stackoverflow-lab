@@ -1,6 +1,6 @@
 const { Question, Answer } = require("../models/Question");
 const User = require("../models/User");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = {
@@ -20,23 +20,32 @@ module.exports = {
     });
   },
   create: (req, res) => {
-      console.log(req.body)
+    // console.log(req.body);
 
     Question.create({
-        content: req.body.content,
-        author: req.body.author
+      content: req.body.content,
+      author: req.body.author
     }).then(question => {
-        User.findOne({ _id: question.author }).then(user => {
-            user.questions.push(question)
-            // .populate('questions')
-            res.redirect(`/question/${question._id}`)
-        });
-    }).catch(err => {
-        console.error(err)
-    })
-    
-    
-},
+      User.findOne({ _id: question.author }).then(user => {
+        user.questions
+          .push(question)
+          .then(() => {
+            user.findOne({ _id: req.body.author }).populate('Question[author]');
+          })
+          .catch(err => {
+            console.error(err);
+          });
+        res.redirect(`/question/${question._id}`);
+      });
+    });
+    //   .then(() => {
+    //     User.findOne({ id: req.body.author }).populate("author");
+    //     return parsedAuthor;
+    //   });
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
+  },
 
   update: (req, res) => {
     let { content, author } = req.body;

@@ -23,19 +23,15 @@
 
     <div class='form-group'>
         <p>Your Question:</p>
-        {{!-- the two things it should be calling is author and content, dscribed by the application controller --}}
-
-        {{!-- We think the problem is within our inputs, right here --}}
-        <input name="content" type="text" id="content">
+        <textarea name="content" type="text" id="content"></textarea>
     </div>
-
+    <br>
+    Author:
     <select name="author">
         {{#each users}}
         <option>{{_id}}</option>
         {{/each}}
     </select>
-
-
 
     <input type="submit" value="Question" class="form-control" />
 
