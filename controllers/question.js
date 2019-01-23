@@ -41,7 +41,7 @@ module.exports = {
         content: req.body.content,
         author: req.body.author
     }).then(question => {
-        User.findOne({ _id: req.body.author }).then(user => {
+        User.findOne({ _id: question.author }).then(user => {
             user.questions.push(question)
             // .populate('questions')
             res.redirect(`/question/${question._id}`)
