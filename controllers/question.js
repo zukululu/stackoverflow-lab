@@ -29,12 +29,12 @@ module.exports = {
       User.findOne({ _id: question.author }).then(user => {
         user.questions
           .push(question)
-          .then(() => {
-            user.findOne({ _id: req.body.author }).populate('Question[author]');
-          })
-          .catch(err => {
-            console.error(err);
-          });
+        //   .then(() => {
+        //     user.findOne({ _id: req.body.author }).populate('email');
+        //   })
+        //   .catch(err => {
+        //     console.error(err);
+        //   });
         res.redirect(`/question/${question._id}`);
       });
     });
