@@ -20,34 +20,38 @@ module.exports = {
     });
   },
   create: (req, res) => {
-    User.create({
-      email: req.body.question.email
-    }).catch(err => {
-      console.error(err);
-      })
-      .then(newUser => {
-        Question.create({
-          content: req.body.question.content,
-          author: newUser.email
-        }).then(newQuestion => {
-          newUser.questions.push(newQuestion);
-          return res.redirect(`/question/${newQuestion._id}`);
+      console.log(req.body)
+    // User.create({
+    //   email: req.body.question.email
+    // }).catch(err => {
+    //   console.error(err);
+    //   })
+    //   .then(newUser => {
+    //     Question.create({
+    //       content: req.body.question.content,
+    //       author: req.body.question.author
+    //     }).then(newQuestion => {
+    //       newUser.questions.push(newQuestion);
+    //       return res.redirect(`/question/${newQuestion._id}`);
+    //     });
+    //   })
+    
+    
+    Question.create({
+        content: req.body.content,
+        author: req.body.author
+    }).then(question => {
+        User.findOne({ _id: req.body.author }).then(user => {
+            user.questions.push(question)
+            // .populate('questions')
+            res.redirect(`/question/${question._id}`)
         });
-      })
-  },
-
-  //   Question.create({
-  //     content: req.body.question.content,
-  //     author: req.body.author
-  //   }).then(question => {
-  //     User.findOne({ email: req.body.author }).then(user => {
-  //       user.questions.push(question);
-  //       user.save(err => {
-  //       });
-  //     });
-  //   }).catch(err => {
-  //     console.error(err)
-  //   })
+    }).catch(err => {
+        console.error(err)
+    })
+    
+    
+},
 
   update: (req, res) => {
     let { content, author } = req.body;
