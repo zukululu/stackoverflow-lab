@@ -10,35 +10,31 @@ module.exports = {
           question.answers = answers;
           res.render("question/show", question);
         });
-      })
+      });
   },
   new: (req, res) => {
     User.find({}).then(users => {
       res.render("question/new", { users });
     });
   },
-  create: (req, res) => 
-  {
-    User.create(
-    {
+  create: (req, res) => {
+    User.create({
       email: req.params.email,
       password: req.params.password
-    }).then((newUser) => 
-    {
-      Question.create(
-      {
-        content: req.params.content,
-        author: newUser.email
-      }).then(newQuestion => 
-        {
-        newUser.questions.push(newQuestion)
-        return res.redirect(`/question/${newQuestion._id}`);
-        })
-    }).catch(err => {
-      console.error(err)
     })
+      .then(newUser => {
+        Question.create({
+          content: req.params.content,
+          author: newUser.email
+        }).then(newQuestion => {
+          newUser.questions.push(newQuestion);
+          return res.redirect(`/question/${newQuestion._id}`);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   },
-
 
   //   Question.create({
   //     content: req.body.question.content,
@@ -52,7 +48,6 @@ module.exports = {
   //   }).catch(err => {
   //     console.error(err)
   //   })
-
 
   update: (req, res) => {
     let { content, author } = req.body;
