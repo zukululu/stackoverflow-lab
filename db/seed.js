@@ -9,8 +9,21 @@ User.find({}).remove(() => {
       }).then(user => {
         Promise.all([
           Question.create({
-            content: "What is life?",
-            author: user._id
+            content: "How old are you?",
+            author: user._id,
+            answers: [
+              {
+                content: 'I am 76',
+                createdAt: {
+                  type: Date,
+                  default: Date.now()
+                },
+                author: {
+                  type: Schema.Types.ObjectId,
+                  ref: "User"
+                }
+              }
+            ]
           }).then(question => {
             user.questions.push(question);
           }),
