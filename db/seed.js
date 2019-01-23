@@ -33,17 +33,15 @@ User.find({}).remove(() => {
             content: "What's a for loop?",
             author: user._id,
             answers: [
-              {
-                content: 'I am 76',
-                createdAt: {
-                  type: Date,
-                  default: Date.now()
-                },
-                author: {
-                  type: Schema.Types.ObjectId,
-                  ref: "User"
-                }
-              }]
+            //   {
+            //     content: 'I am 76',
+            //     createdAt: { type: Date, default: Date.now() },
+            //     author: { type: Schema.Types.ObjectId, ref: "User" }
+            //   }.then(answer => {
+            //     user.questions.answers.push(answer)
+            // })
+    
+            ]
           }).then(question => {
             user.questions.push(question);
           }),
@@ -53,6 +51,9 @@ User.find({}).remove(() => {
           }).then(question => {
             user.questions.push(question);
           })
+
+
+
         ]).then(() => {
           user.save(err => console.log(err));
         });
