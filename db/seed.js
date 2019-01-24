@@ -22,7 +22,8 @@ User.find({}).remove(() => {
         author: newUser._id
       }).then(newQuestion => {
         Answer.create({
-          content: "42"
+          content: "Here is our answer",
+          author: "Bob"
         }).then((newAnswer => {
           newQuestion.answers.push(newAnswer)
           newUser.questions.push(newQuestion._id)

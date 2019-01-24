@@ -4,13 +4,14 @@
 
 <p>Hello from views/question/show.hbs</p>
 
-<p>Question:</p>
-<h1>{{ content }}</h1>
-<p>by</p>
-author:
+<div class="question-board">
+    <p>Question:</p>
+    <h1>{{ content }}</h1>
+    <p>by</p>
+    <h3>{{ author.email }}</h3>
 
-<h3>{{ author.email }}</h3>
-<h4>{{ answers }}</h4>
+</div>
+
 <br>
 
 <form action='/answer' method="POST">
@@ -25,6 +26,16 @@ author:
         {{/each}}
     </select>
 </form>
+
+<p>All answers to this question:</p>
+    <h4>{{ answers }}</h4>
+
+
+
+
+
+
+
 
 
 {{!-- Here is the proposed answers sheet --}}

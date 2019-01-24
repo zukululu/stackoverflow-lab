@@ -17,7 +17,7 @@ module.exports = {
     }).then(a => {
       Question.findOne({ _id: req.params.id }).then(user => {
         user.answers.push(a);
-        res.redirect("/question/${question._id");
+        res.redirect(`/question/${question._id}`);
         // Don't think we need the res.redirect, but there it is
       });
     });
