@@ -18,10 +18,11 @@ module.exports = {
       Question.findOne({ _id: req.params.id }).then(user => {
         console.log(req.params.id)
         user.answers.push(a);
-        res.redirect(`/question/${question._id}`);
         // Don't think we need the res.redirect, but there it is
-      });
     });
+});
+// Why is our redirect now working? After submit, the the page is going to /answer, when it should stay on /question/:id
+res.redirect(`/question/${question._id}`);
   },
   update: (req, res) => {}
   // delete: (req, res) => {}
