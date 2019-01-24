@@ -11,7 +11,7 @@
 //   }
 // }
 
-const { Question } = require('../model/Question')
+const { Question } = require('../models/Question')
 
 module.exports = {
   index: (req, res) => {

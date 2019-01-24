@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const { Question } = require('../models/Question')
 const passport = require('passport')
+const flash = require('req-flash')
 
 module.exports = {
   show: (req,res) => {
