@@ -1,77 +1,36 @@
-<p class="card">
-    {{!-- {{> 'question'}} --}}
+<p class='card'>
+    {{> 'question'}}
 </p>
 
-<p>Hello from views/question/show.hbs</p>
+{{#if answers.length}}
+    {{#each answers}}
+        <div class='card'>
+            <div class='card-content'>
+                <span class='card-title'>
+                    {{ content }}
+                </span>
+            </div>
+            <div class='card-action'>
+                <a href='/user/{{ author.id }}' class=''>{{ author.local.email }}</a>
+                <span class='answer__date'>{{ createdAt }}</span>
+            </div>
+        </div>
+    {{/each}}
+{{/if}}
 
-<div class="question-board">
-    <p>Question:</p>
-    <h1>{{ content }}</h1>
-    <p>by</p>
-    <h3>{{ author.email }}</h3>
-</div>
-
-<br>
-
-<form action='/answer' method="POST">
-    <div class='form-group'>
-        <p>Type an Answer:</p>
-        <textarea name="content" type="text" id="content"></textarea>
-    </div>
-
-    <p>Author:</p>
-    <select name="author">
-        {{#each users }}
-        <option>{{_id}}</option>
-        {{/each}}
-    </select>
-    <button type='submit' value="Question[Answer]" class="form-control">Submit Answer</button>
-    {{!-- Typing value="Answer" breaks the page --}}
-</form>
-
-<p>All answers to this question:</p>
-<h4>{{ answers }}</h4>
-
-
-
-
-
-
-
-
-
-{{!-- Here is the proposed answers sheet --}}
-
-{{!--
-{{#if answers }}
-{{#each answers}}
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">
-            {{ content }}
-        </span>
-    </div>
-    <div class="card-action">
-        <a href="/user/{{ author.id }}" class="">{{ author.local.email }}</a>
-        <span class="question__date">{{ createdAt }}</span>
-    </div>
-</div>
-{{/each}}
-{{/if}} --}}
-{{!--
 {{#if currentUser}}
-<div class="card">
-    <div class="card-content">
-        <h4 class="card-title">Add a answer:</h6>
-            <form method="POST" action="/tweet/{{id}}?_method=PUT" class="row">
-                <p class="input-field inline col s10">
-                    <label for="content"></label>
-                    <input type="text" name="content" id="">
-                </p>
-                <p class="input-field inline col s2">
-                    <input class="btn" type="submit" value="Submit">
-                </p>
-            </form>
+<div class='card'>
+    <div class='card-content'>
+        <h4 class='card-title'>Add an answer: </h4>
+        <form method='POST' action='/question/{{id}}?_method=PUT' class='row'>
+        <p class='input-field inline col s10'>
+            <label for='content'></label>
+            <input type='text' name='content' id=''>
+        </p>
+        <p class='input-field inline col s2'>
+            <input class='btn' type='submit' value='Submit'>
+        </p>
+        </form>
     </div>
 </div>
-{{/if }} --}}
+{{/if}}

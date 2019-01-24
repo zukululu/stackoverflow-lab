@@ -1,38 +1,11 @@
-{{!-- old one --}}
-
-{{!-- <p class="question-form">
-    Hello from views/question/new
-    <form action='/question' method="POST">
-        <input type='text' name='question[content]'></input>
-        <input type="text" name='author'></input>
-        <select name="" id="">
-            {{#each users}}
-            <option>{{email}}</option>
-            {{/each}}
-        </select>
-        <button type="submit">Submit</button>
+<section class='form-container'>
+    <h4>New Question</h4>
+    <form action='/question' method='POST' class='question-form'>
+    <p class='input-field'>
+        <textarea name='question[content]' cols='30' rows='10' placeholder='Message'></textarea>
+    </p>
+    <p>
+        <input type='submit' value='Question' class='btn waves-effect waves-light'>
+    </p>
     </form>
-</p> --}}
-
-
-{{!-- new one --}}
-
-<h3>hello from question/new!</h3>
-
-<form action='/question' method="POST">
-
-    <div class='form-group'>
-        <p>Your Question:</p>
-        <textarea name="content" type="text" id="content"></textarea>
-    </div>
-    <br>
-    Author:
-    <select name="author">
-        {{#each users}}
-        <option>{{_id}}</option>
-        {{/each}}
-    </select>
-
-    <input type="submit" value="Question" class="form-control" />
-</form>
-
+</section>
