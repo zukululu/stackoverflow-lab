@@ -21,12 +21,12 @@ User.find({}).remove(() => {
         content: "what is the meaning of life?",
         author: newUser._id
       }).then(newQuestion => {
+        newUser.questions.push(newQuestion)
         Answer.create({
           content: "Here is our answer",
-          author: "Bob"
+          author: newUser._id
         }).then((newAnswer => {
           newQuestion.answers.push(newAnswer)
-          newUser.questions.push(newQuestion._id)
           console.log('done??!??')
           process.exit()
         })).catch(err => {
