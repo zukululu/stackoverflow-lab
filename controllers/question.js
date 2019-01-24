@@ -48,15 +48,20 @@ module.exports = {
   },
 
   update: (req, res) => {
-    let { content, author } = req.body;
-    Question.findOne({ _id: req.params.id }).then(question => {
-      question.answers.push({
-        content,
-        author
-      });
-      question.save(err => {
-        res.redirect(`/question/${question._id}`);
-      });
-    });
+    //redirect user to new page
+    res.redirect(`/questions/${question._id}/update`)
+    //on new page, make text area value set to body content
+    //on submit, set new content body
+
+    // let { content, author } = req.body;
+    // Question.findOne({ _id: req.params.id }).then(question => {
+    //   question.answers.push({
+    //     content,
+    //     author
+    //   });
+    //   question.save(err => {
+    //     res.redirect(`/question/${question._id}`);
+    //   });
+    // });
   }
 };
