@@ -16,6 +16,7 @@ module.exports = {
       author: req.body.author
     }).then(a => {
       Question.findOne({ _id: req.params.id }).then(user => {
+        console.log(req.params.id)
         user.answers.push(a);
         res.redirect(`/question/${question._id}`);
         // Don't think we need the res.redirect, but there it is
