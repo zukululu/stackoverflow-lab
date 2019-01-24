@@ -16,13 +16,14 @@ Question.author:
 author._id  :
 <h3>{{ author._id }}</h3> --}}
 <h3>{{ author.email }}</h3>
+<h4>{{ answers }}</h4>
 
 
 
 
 {{!-- Here is the proposed answers sheet --}}
 
-
+{{!-- 
 {{#if answers }}
 {{#each answers}}
 <div class="card">
@@ -37,8 +38,8 @@ author._id  :
     </div>
 </div>
 {{/each}}
-{{/if}}
-
+{{/if}} --}}
+{{!-- 
 {{#if currentUser}}
 <div class="card">
     <div class="card-content">
@@ -54,4 +55,4 @@ author._id  :
             </form>
     </div>
 </div>
-{{/if }}
+{{/if }} --}}
