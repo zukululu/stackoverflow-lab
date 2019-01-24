@@ -8,9 +8,11 @@ module.exports = {
     Question.findOne({ _id: req.params.id })
       .populate("author")
       .then(question => {
-        Answer.populate(question.answers, { path: "author" }).then(answers => {
+          // why does not having  path: 'author' break the code?...
+        Answer.populate(question.answers, {  path: "author"}).then(answers => {
           question.answers = answers;
           res.render("question/show", question);
+          res.render("question/show", question.answers);
         });
       });
   },
@@ -27,8 +29,7 @@ module.exports = {
       author: req.body.author
     }).then(question => {
       User.findOne({ _id: question.author }).then(user => {
-        user.questions
-          .push(question)
+        user.questions.push(question);
         //   .then(() => {
         //     user.findOne({ _id: req.body.author }).populate('email');
         //   })
@@ -46,10 +47,9 @@ module.exports = {
     //     console.error(err);
     //   });
   },
-
   update: (req, res) => {
     //redirect user to new page
-    res.redirect(`/questions/${question._id}/update`)
+    res.redirect(`/questions/${question._id}/update`);
     //on new page, make text area value set to body content
     //on submit, set new content body
 

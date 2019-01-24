@@ -9,7 +9,6 @@
     <h1>{{ content }}</h1>
     <p>by</p>
     <h3>{{ author.email }}</h3>
-
 </div>
 
 <br>
@@ -19,17 +18,19 @@
         <p>Type an Answer:</p>
         <textarea name="content" type="text" id="content"></textarea>
     </div>
+
     <p>Author:</p>
     <select name="author">
         {{#each users }}
         <option>{{_id}}</option>
         {{/each}}
     </select>
-    <button type='submit'>Submit Answer</button>
+    <button type='submit' value="Question[Answer]" class="form-control">Submit Answer</button>
+    {{!-- Typing value="Answer" breaks the page --}}
 </form>
 
 <p>All answers to this question:</p>
-    <h4>{{ answers }}</h4>
+<h4>{{ answers }}</h4>
 
 
 
