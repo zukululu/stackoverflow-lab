@@ -38,7 +38,8 @@ module.exports = {
       })
   },
   login: (req,res) => {
-    res.render('user/login', { message: req.flash('loginMessage') })
+    res.render('user/login', )
+    // { message: req.flash('loginMessage') }
   },
   createLogin: (req,res) => {
     const login = passport.authenticate('local-login', {
@@ -46,6 +47,7 @@ module.exports = {
       failureRedirect: '/user/login',
       failureFlash: true
     })
+    
 
     return login(req,res)
   },
